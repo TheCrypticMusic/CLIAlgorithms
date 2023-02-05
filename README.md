@@ -5,3 +5,8 @@ CLI application that takes the user through algorithms in a step-by-step manner 
 Implemented Algorithms:
 
 Binary Search
+
+TO DO:
+
+Accept input from user
+Allow user to input their own array numbers and target or use a random selection.
