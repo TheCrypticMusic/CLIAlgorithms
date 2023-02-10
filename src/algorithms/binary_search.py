@@ -1,5 +1,5 @@
 class BinarySearch:
-    def __init__(self, ordered_list: list[int], target: int) -> int:
+    def __init__(self, ordered_list: list[int], target: int):
         self._ordered_list = ordered_list
         self._target = target
         self._lower_bound = 0
@@ -10,7 +10,8 @@ class BinarySearch:
     @property
     def ordered_list(self):
         if self._ordered_list != sorted(self._ordered_list):
-            raise ValueError("List is not sorted. Binary Search only works with sorted lists")    
+            wrong_list = self._ordered_list
+            raise ValueError(f"List is not sorted. Binary Search only works with sorted lists\nList provided: {wrong_list} ")    
         return self._ordered_list
 
     @ordered_list.setter
@@ -19,8 +20,11 @@ class BinarySearch:
 
     @property
     def target(self):
-        if self._ordered_list.index(self._target):
+        if self._target in self._ordered_list:
             return self._target
+        else:
+            raise ValueError(f"Target is not present within the ordered list \
+                \nOrdered List: {self._ordered_list}\nTarget: {self._target}")
 
     @target.setter
     def target(self, new_target):
