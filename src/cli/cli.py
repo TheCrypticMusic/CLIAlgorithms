@@ -2,6 +2,7 @@ from typing import Optional
 import typer
 
 from src.algorithms.binary_search import BinarySearch
+from src.algorithms.linear_search import LinearSearch
 import src.helpers.cli_helpers as cli_helpers
 
 app = typer.Typer()
@@ -9,27 +10,32 @@ app = typer.Typer()
 @app.command("binary_search")
 def cli_binary_search(user_ordered_list: str, user_target: int):
 
-    binary_list = BinarySearch(cli_helpers.to_list(user_ordered_list), int(user_target))
+    binary_search = BinarySearch(cli_helpers.to_list(user_ordered_list), int(user_target))
 
-    while binary_list.is_found == False:
+    while binary_search.is_found == False:
         cli_helpers.draw_binary_search_table(
             "Binary Search",
-            binary_list.lower_bound,
-            binary_list.upper_bound,
-            binary_list.ordered_list,
-            binary_list.ordered_list.index(binary_list.target),
-            binary_list.find_mid_point(
-                binary_list.lower_bound, binary_list.upper_bound
+            binary_search.lower_bound,
+            binary_search.upper_bound,
+            binary_search.ordered_list,
+            binary_search.ordered_list.index(binary_search.target),
+            binary_search.find_mid_point(
+                binary_search.lower_bound, binary_search.upper_bound
             ),
         )
 
         cli_helpers.draw_table_key(
-            lower_bound=f"L - Lower Bound = {binary_list.lower_bound}",
-            upper_bound=f"U - Upper Bound = {binary_list.upper_bound}",
-            middle_point=f"M - Middle Point = {binary_list.find_mid_point(binary_list.lower_bound, binary_list.upper_bound)}",
-            target=f"T - Target (Index) = {binary_list.ordered_list.index(binary_list.target)}",
+            lower_bound=f"L - Lower Bound = {binary_search.lower_bound}",
+            upper_bound=f"U - Upper Bound = {binary_search.upper_bound}",
+            middle_point=f"M - Middle Point = {binary_search.find_mid_point(binary_search.lower_bound, binary_search.upper_bound)}",
+            target=f"T - Target (Index) = {binary_search.ordered_list.index(binary_search.target)}",
         )
-        binary_list.run(loop=False)
+        binary_search.run(loop=False)
+
+
+@app.command("linear_search")
+def cli_linear_search(user_list: str, user_target: int):
+    LinearSearch(user_list, user_target)
 
 
 @app.command()
