@@ -11,7 +11,9 @@ class BinarySearch:
     def ordered_list(self):
         if self._ordered_list != sorted(self._ordered_list):
             wrong_list = self._ordered_list
-            raise ValueError(f"List is not sorted. Binary Search only works with sorted lists\nList provided: {wrong_list} ")    
+            raise ValueError(
+                f"List is not sorted. Binary Search only works with sorted lists\nList provided: {wrong_list} "
+            )
         return self._ordered_list
 
     @ordered_list.setter
@@ -23,8 +25,10 @@ class BinarySearch:
         if self._target in self._ordered_list:
             return self._target
         else:
-            raise ValueError(f"Target is not present within the ordered list \
-                \nOrdered List: {self._ordered_list}\nTarget: {self._target}")
+            raise ValueError(
+                f"Target is not present within the ordered list \
+                \nOrdered List: {self._ordered_list}\nTarget: {self._target}"
+            )
 
     @target.setter
     def target(self, new_target):

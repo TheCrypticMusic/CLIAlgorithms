@@ -40,7 +40,7 @@ def draw_binary_search_table(
 def draw_table_key(**caption_fields):
     for fields in caption_fields.values():
         print(fields)
-    
+
 
 def to_list(user_input: str) -> list:
     str_list = user_input.split(" ")
