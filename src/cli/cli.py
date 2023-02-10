@@ -6,9 +6,6 @@ import src.helpers.cli_helpers as cli_helpers
 
 app = typer.Typer()
 
-# TODO: Get input from user.
-
-
 @app.command("binary_search")
 def cli_binary_search(user_ordered_list: str, user_target: int):
 
