@@ -1,6 +1,5 @@
 from typing import Optional
 import typer
-
 from src.algorithms.binary_search import BinarySearch
 from src.algorithms.linear_search import LinearSearch
 import src.helpers.cli_helpers as cli_helpers
@@ -35,7 +34,8 @@ def cli_binary_search(user_ordered_list: str, user_target: int):
 
 @app.command("linear_search")
 def cli_linear_search(user_list: str, user_target: int):
-    LinearSearch(user_list, user_target)
+    
+    linear_search = LinearSearch(user_list, user_target)
 
 
 @app.command()
