@@ -35,7 +35,15 @@ def cli_binary_search(user_ordered_list: str, user_target: int):
 @app.command("linear_search")
 def cli_linear_search(user_list: str, user_target: int):
     
-    linear_search = LinearSearch(user_list, user_target)
+    converted_user_list = cli_helpers.to_list(user_input=user_list)
+
+    linear_search = LinearSearch(converted_user_list, user_target)
+
+    while linear_search.is_found == False:
+        cli_helpers.draw_table_key(current_number=f"C - Current = {linear_search.current_number}",
+                                   list_index=f"I - Current Number Index = {linear_search.list_index}",
+                                   target=f"T - Target = {linear_search.target}")       
+        linear_search.run(loop=False)
 
 
 @app.command()
