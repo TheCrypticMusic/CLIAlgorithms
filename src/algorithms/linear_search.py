@@ -50,6 +50,10 @@ class LinearSearch:
     @current_number.setter
     def current_number(self, new_current_number):
         self._current_number = new_current_number
+
+    @property
+    def target_index(self):
+        return self.list.index(self.target)
     
     def run(self, loop: bool):
 

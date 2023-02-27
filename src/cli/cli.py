@@ -40,9 +40,19 @@ def cli_linear_search(user_list: str, user_target: int):
     linear_search = LinearSearch(converted_user_list, user_target)
 
     while linear_search.is_found == False:
+
+        cli_helpers.draw_linear_search_table("Linear Search",
+                                            linear_search.list,
+                                            linear_search.current_number,
+                                            linear_search.target,
+                                            linear_search.list_index,
+                                            linear_search.target_index
+                                             )
+
         cli_helpers.draw_table_key(current_number=f"C - Current = {linear_search.current_number}",
                                    list_index=f"I - Current Number Index = {linear_search.list_index}",
-                                   target=f"T - Target = {linear_search.target}")       
+                                   target=f"T - Target = {linear_search.target}",
+                                   target_index=f"TI - Target Index = {linear_search.target_index}")       
         linear_search.run(loop=False)
 
 

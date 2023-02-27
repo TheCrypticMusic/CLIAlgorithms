@@ -36,6 +36,32 @@ def draw_binary_search_table(
     console.print(table)
 
 
+def draw_linear_search_table(table_name, row_data, current_number, target, current_number_index, target_index):
+    table = Table(box=box.SIMPLE, title=table_name, show_footer=True)
+    
+    
+        # if index == tar:
+        #     if mid == index_of_target:
+        #         table.add_column("FOUND", style="blue")
+        #     else:
+        #         table.add_column("T", style="green")
+        # elif index == mid:
+        #     table.add_column("M", style="cyan")
+        # elif index == lowest_col_number:
+        #     table.add_column("L", style="yellow")
+        # elif index == highest_col_number:
+        #     table.add_column("U", style="red")
+        # else:
+        #     table.add_column()
+
+    s_b_list = list(map(str, row_data))
+    index = list(map(str, range(current_number_index, len(row_data))))
+    table.add_row(*index)
+    table.add_column()
+    table.add_row(*s_b_list[current_number_index : len(row_data)])
+
+    console.print(table)
+
 def draw_table_key(**caption_fields):
     for fields in caption_fields.values():
         print(fields)
