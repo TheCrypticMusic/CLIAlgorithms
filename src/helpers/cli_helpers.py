@@ -46,19 +46,6 @@ def draw_linear_search_table(table_name, row_data,current_number_index, target_i
             table.add_column("C", style="green")
         else:
             table.add_column()
-        # if index == tar:
-        #     if mid == index_of_target:
-        #         table.add_column("FOUND", style="blue")
-        #     else:
-        #         table.add_column("T", style="green")
-        # elif index == mid:
-        #     table.add_column("M", style="cyan")
-        # elif index == lowest_col_number:
-        #     table.add_column("L", style="yellow")
-        # elif index == highest_col_number:
-        #     table.add_column("U", style="red")
-        # else:
-        #     table.add_column()
 
     s_b_list = list(map(str, row_data))
     index = list(map(str, range(current_number_index, len(row_data))))
