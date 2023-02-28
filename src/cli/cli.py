@@ -43,8 +43,6 @@ def cli_linear_search(user_list: str, user_target: int):
 
         cli_helpers.draw_linear_search_table("Linear Search",
                                             linear_search.list,
-                                            linear_search.current_number,
-                                            linear_search.target,
                                             linear_search.list_index,
                                             linear_search.target_index
                                              )

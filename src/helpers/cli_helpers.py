@@ -36,10 +36,16 @@ def draw_binary_search_table(
     console.print(table)
 
 
-def draw_linear_search_table(table_name, row_data, current_number, target, current_number_index, target_index):
+def draw_linear_search_table(table_name, row_data,current_number_index, target_index):
     table = Table(box=box.SIMPLE, title=table_name, show_footer=True)
     
-    
+    for index in range(current_number_index, len(row_data)):
+        if index == target_index:
+            table.add_column("TI", style="red")
+        elif index == current_number_index:
+            table.add_column("C", style="green")
+        else:
+            table.add_column()
         # if index == tar:
         #     if mid == index_of_target:
         #         table.add_column("FOUND", style="blue")
