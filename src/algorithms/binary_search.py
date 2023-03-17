@@ -30,12 +30,29 @@ class BinarySearch:
         - ValueError: If the ordered list is not sorted in ascending order or if the target is not present in the list.
         """
 
-        self._ordered_list = ordered_list
-        self._target = target
+        self._ordered_list = self._check_ordered_list_input(ordered_list)
+        self._target = self._check_target_input(target, ordered_list)
         self._lower_bound = 0
         self._upper_bound = len(ordered_list) - 1
         self._mid_point = self.find_mid_point(self._lower_bound, self._upper_bound)
         self._is_found = False
+
+    def _check_ordered_list_input(self, ordered_list):
+        if ordered_list != sorted(ordered_list):
+            unordered_list = ordered_list
+            raise ValueError(
+                f"List is not sorted. Binary Search only works with sorted lists\nList provided: {unordered_list} "
+            )
+        return ordered_list
+
+    def _check_target_input(self, target, ordered_list):
+        if target in ordered_list:
+            return target
+        else:
+            raise ValueError(
+                f"Target is not present within the ordered list \
+                \nOrdered List: {ordered_list}\nTarget: {target}"
+            )
 
     @property
     def ordered_list(self) -> list[int]:
@@ -45,16 +62,7 @@ class BinarySearch:
 
         Returns:
         - list[int]: The ordered list.
-
-         Raises:
-        - ValueError: If the new ordered list is not sorted in ascending order.
         """
-
-        if self._ordered_list != sorted(self._ordered_list):
-            unordered_list = self._ordered_list
-            raise ValueError(
-                f"List is not sorted. Binary Search only works with sorted lists\nList provided: {unordered_list} "
-            )
         return self._ordered_list
 
     @ordered_list.setter
@@ -68,6 +76,7 @@ class BinarySearch:
         Raises:
         - ValueError: If the new ordered list is not sorted in ascending order.
         """
+        self._check_ordered_list_input(new_ordered_list)
         self._ordered_list = new_ordered_list
 
     @property
@@ -78,13 +87,7 @@ class BinarySearch:
         Returns:
         - int: The target integer.
         """
-        if self._target in self._ordered_list:
-            return self._target
-        else:
-            raise ValueError(
-                f"Target is not present within the ordered list \
-                \nOrdered List: {self._ordered_list}\nTarget: {self._target}"
-            )
+        return self._target
 
     @target.setter
     def target(self, new_target: int) -> None:
@@ -97,6 +100,7 @@ class BinarySearch:
         Raises:
         - ValueError: If the new target is not present in the ordered list.
         """
+        self._check_target_input(new_target, self.ordered_list)
         self._target = new_target
 
     @property
