@@ -66,18 +66,8 @@ class LinearSearch:
         return self._data_index
 
     @data_index.setter
-    def data_index(self, new_index):
+    def data_index(self, new_index: int):
         self._data_index = new_index
-
-    @property
-    def list_index(self):
-        if self._list_index > len(self.list):
-            raise ValueError("Incorrect Index")
-        return self._list_index
-
-    @list_index.setter
-    def list_index(self, new_index):
-        self._list_index = new_index
 
     @property
     def is_found(self) -> bool:
@@ -90,7 +80,7 @@ class LinearSearch:
         return self._is_found
 
     @is_found.setter
-    def is_found(self, new_flag):
+    def is_found(self, new_flag: bool):
         self._is_found = new_flag
 
     @property
@@ -104,11 +94,11 @@ class LinearSearch:
         return self._target
 
     @target.setter
-    def target(self, new_target):
+    def target(self, new_target: int):
         self._target = new_target
 
     @property
-    def current_number(self):
+    def current_number(self) -> int:
         """
         The current integer being compared to the target.
 
@@ -118,11 +108,11 @@ class LinearSearch:
         return self._current_number
 
     @current_number.setter
-    def current_number(self, new_current_number):
+    def current_number(self, new_current_number: int):
         self._current_number = new_current_number
 
     @property
-    def target_index(self):
+    def target_index(self) -> int:
         """
         The index of the target integer in the data list.
 
@@ -131,7 +121,7 @@ class LinearSearch:
         """
         return self.data.index(self.target)
 
-    def run(self, loop: bool = True):
+    def run(self, loop: bool = True) -> bool:
 
         if loop:
             for number in self.data:
