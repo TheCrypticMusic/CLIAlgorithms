@@ -47,11 +47,11 @@ class LinearSearch:
         return self._data
 
     @data.setter
-    def data(self, new_data: list):
+    def data(self, new_data: list) -> None:
         self._data = new_data
 
     @property
-    def data_index(self):
+    def data_index(self) -> int:
         """
         The current index of the integer being compared.
 
@@ -66,7 +66,7 @@ class LinearSearch:
         return self._data_index
 
     @data_index.setter
-    def data_index(self, new_index: int):
+    def data_index(self, new_index: int) -> None:
         self._data_index = new_index
 
     @property
@@ -80,7 +80,13 @@ class LinearSearch:
         return self._is_found
 
     @is_found.setter
-    def is_found(self, new_flag: bool):
+    def is_found(self, new_flag: bool) -> None:
+        """
+        Set a new status of whether the target was found.
+
+        Args:
+        - new_status (bool): A new status of whether the target was found (True or False).
+        """
         self._is_found = new_flag
 
     @property
@@ -94,7 +100,13 @@ class LinearSearch:
         return self._target
 
     @target.setter
-    def target(self, new_target: int):
+    def target(self, new_target: int) -> None:
+        """
+        Set a new target integer.
+
+        Args:
+        - new_target (int): A new integer that we want to find within the list
+        """
         self._target = new_target
 
     @property
@@ -108,7 +120,7 @@ class LinearSearch:
         return self._current_number
 
     @current_number.setter
-    def current_number(self, new_current_number: int):
+    def current_number(self, new_current_number: int) -> None:
         self._current_number = new_current_number
 
     @property
