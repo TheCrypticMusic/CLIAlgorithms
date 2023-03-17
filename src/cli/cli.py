@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 import typer
 from src.algorithms.binary_search import BinarySearch
 from src.algorithms.linear_search import LinearSearch
@@ -8,20 +8,35 @@ app = typer.Typer()
 
 @app.command("binary_search")
 def cli_binary_search(user_ordered_list: str, user_target: int):
+    """
+    Perform binary search on an ordered list.
 
-    binary_search = BinarySearch(cli_helpers.to_list(user_ordered_list), int(user_target))
+    Args:
+        user_ordered_list: A string representing a comma-separated list of integers.
+        user_target: The target integer to search for in the list.
 
-    while binary_search.is_found == False:
+    Returns:
+        None.
+    """
+    ordered_list: List[int] = cli_helpers.to_list(user_ordered_list)
+    binary_search = BinarySearch(ordered_list, int(user_target))
+
+    while not binary_search.is_found:
+        lower_bound = binary_search.lower_bound
+        upper_bound = binary_search.upper_bound
+        row_data = binary_search.ordered_list
+        index_of_target = binary_search.ordered_list.index(binary_search.target)
+        mid = binary_search.find_mid_point(binary_search.lower_bound, binary_search.upper_bound)
+        
         cli_helpers.draw_binary_search_table(
             "Binary Search",
-            binary_search.lower_bound,
-            binary_search.upper_bound,
-            binary_search.ordered_list,
-            binary_search.ordered_list.index(binary_search.target),
-            binary_search.find_mid_point(
-                binary_search.lower_bound, binary_search.upper_bound
+            lower_bound,
+            upper_bound,
+            row_data,
+            index_of_target,
+            mid
             ),
-        )
+
 
         cli_helpers.draw_table_key(
             lower_bound=f"L - Lower Bound = {binary_search.lower_bound}",

@@ -1,3 +1,4 @@
+from typing import List
 from rich.console import Console
 from rich.table import Table
 from rich import box
@@ -7,8 +8,29 @@ console = Console()
 
 
 def draw_binary_search_table(
-    table_name, lowest_col_number, highest_col_number, row_data, index_of_target, mid
-):
+    table_name: str, 
+    lowest_col_number: int, 
+    highest_col_number: int, 
+    row_data: List[int], 
+    index_of_target: int, 
+    mid: int
+) -> None:
+    
+    """
+    Draw a binary search table.
+
+    Args:
+        table_name: The name of the table.
+        lowest_col_number: The lowest column number to display.
+        highest_col_number: The highest column number to display.
+        row_data: The list of integers to display in the row.
+        index_of_target: The index of the target integer in the row.
+        mid: The index of the middle point in the row.
+
+    Returns:
+        None.
+    """
+
     table = Table(box=box.SIMPLE, title=table_name, show_footer=True)
 
     for index in range(lowest_col_number, highest_col_number + 1):

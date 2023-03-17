@@ -1,21 +1,73 @@
 class LinearSearch:
+    """
+    A class for performing linear search on a list of integers.
 
-    def __init__(self, list: list, target: int):
-        self._list = list
+    Attributes:
+        data (list): The list of integers to search through.
+        target (int): The integer to search for.
+        is_found (bool): A flag indicating whether or not the target was found.
+        current_number (int): The current integer being compared to the target.
+        data_index (int): The current index of the integer being compared.
+
+    Methods:
+        run(loop=True): Performs linear search on the list of integers.
+            If loop is True (default), uses a for loop to iterate over the list.
+            If loop is False, iterates over the list using the current_number and data_index attributes.
+            Loop = False is to be used with the CLI.py file as it's used in a while loop within that file.
+            Returns True if target is found, False otherwise.
+    """
+
+    def __init__(self, data: list, target: int):
+        """
+        Initialises a LinearSearch object with the provided data and target.
+
+        Args:
+            data (list): The list of integers to search through.
+            target (int): The integer to search for.
+        """
+        self._data = data
         self._target = target
         self._is_found = False
-        self._current_number = list[0]
-        self._list_index = 0
+        self._current_number = data[0]
+        self._data_index = 0
 
     @property
-    def list(self) -> list:
-        if len(self._list) < 0:
+    def data(self) -> list:
+        """
+        The list of integers to search through.
+
+        Raises:
+            ValueError: If the list is empty.
+
+        Returns:
+            list: The list of integers to search through.
+        """
+        if len(self._data) < 0:
             raise ValueError(f"Empty list provided")
-        return self._list
-    
-    @list.setter
-    def list(self, new_list: list):
-        self._list = new_list
+        return self._data
+
+    @data.setter
+    def data(self, new_data: list):
+        self._data = new_data
+
+    @property
+    def data_index(self):
+        """
+        The current index of the integer being compared.
+
+        Raises:
+            ValueError: If the index exceeds the length of the data list.
+
+        Returns:
+            int: The current index of the integer being compared.
+        """
+        if self._data_index > len(self.data):
+            raise ValueError("Incorrect Index")
+        return self._data_index
+
+    @data_index.setter
+    def data_index(self, new_index):
+        self._data_index = new_index
 
     @property
     def list_index(self):
@@ -29,14 +81,26 @@ class LinearSearch:
 
     @property
     def is_found(self) -> bool:
+        """
+        A flag indicating whether or not the target was found.
+
+        Returns:
+            bool: True if target is found, False otherwise.
+        """
         return self._is_found
-    
+
     @is_found.setter
     def is_found(self, new_flag):
         self._is_found = new_flag
 
     @property
     def target(self) -> int:
+        """
+        The integer to search for.
+
+        Returns:
+            int: The integer to search for.
+        """
         return self._target
 
     @target.setter
@@ -45,29 +109,40 @@ class LinearSearch:
 
     @property
     def current_number(self):
+        """
+        The current integer being compared to the target.
+
+        Returns:
+            int: The current integer being compared to the target.
+        """
         return self._current_number
-    
+
     @current_number.setter
     def current_number(self, new_current_number):
         self._current_number = new_current_number
 
     @property
     def target_index(self):
-        return self.list.index(self.target)
-    
-    def run(self, loop: bool):
+        """
+        The index of the target integer in the data list.
+
+        Returns:
+            int: The index of the target integer in the data list.
+        """
+        return self.data.index(self.target)
+
+    def run(self, loop: bool = True):
 
         if loop:
-            pass
-            ## For loop goes here
+            for number in self.data:
+                if number == self.target:
+                    self.is_found = True
+            return False
+
         else:
             if self.current_number == self.target:
                 self.is_found = True
                 return self.is_found
             else:
-                self.list_index += 1
-                self.current_number = self.list[self.list_index]
-            
-        
-
-
+                self.data_index += 1
+                self.current_number = self.data[self.data_index]
