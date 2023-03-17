@@ -8,14 +8,14 @@ console = Console()
 
 
 def draw_binary_search_table(
-    table_name: str, 
-    lowest_col_number: int, 
-    highest_col_number: int, 
-    row_data: List[int], 
-    index_of_target: int, 
-    mid: int
+    table_name: str,
+    lowest_col_number: int,
+    highest_col_number: int,
+    row_data: List[int],
+    index_of_target: int,
+    mid: int,
 ) -> None:
-    
+
     """
     Draw a binary search table.
 
@@ -58,9 +58,24 @@ def draw_binary_search_table(
     console.print(table)
 
 
-def draw_linear_search_table(table_name, row_data,current_number_index, target_index):
+def draw_linear_search_table(
+    table_name: str, row_data: List[int], current_number_index: int, target_index: int
+) -> None:
+    """
+    Draws a table that represents the linear search algorithm.
+
+    Args:
+    table_name (str): The name of the table.
+    row_data (List[int]): A list of integers representing the values to search through.
+    current_number_index (int): The current index that the algorithm is checking.
+    target_index (int): The index of the target value.
+
+    Returns:
+    None: This function does not return any values, it simply draws the table to the console.
+    """
+
     table = Table(box=box.SIMPLE, title=table_name, show_footer=True)
-    
+
     for index in range(current_number_index, len(row_data)):
         if index == target_index:
             table.add_column("TI", style="red")
@@ -77,12 +92,32 @@ def draw_linear_search_table(table_name, row_data,current_number_index, target_i
 
     console.print(table)
 
-def draw_table_key(**caption_fields):
+
+def draw_table_key(**caption_fields: str) -> None:
+    """
+    Takes keyword arguments representing the caption fields and prints them as a table key.
+
+    Args:
+        **caption_fields (str): Keyword arguments representing the caption fields to print.
+
+    Returns:
+        None
+    """
     for fields in caption_fields.values():
         print(fields)
 
 
 def to_list(user_input: str) -> list:
+    """
+    Converts a space-separated string of numbers into a list of integers.
+
+    Args:
+    user_input (str): A space-separated string of numbers.
+
+    Returns:
+    list: A list of integers representing the numbers in the input string.
+
+    """
     str_list = user_input.split(" ")
     ordered_list = list(map(int, str_list))
     return ordered_list
