@@ -1,12 +1,13 @@
-# CLIAlgorithms
+CLIAlgorithms
 
-CLI application that takes the user through algorithms in a step-by-step manner via the CLI. This is mainly used as a learning platform for myself as I learn algorithms.
+CLIAlgorithms is a command-line interface (CLI) application that takes the user through algorithms in a step-by-step manner via the CLI. This application is mainly used as a learning platform for those looking to learn and understand various algorithms.
 
 Implemented Algorithms:
 
 Binary Search
 
-TO DO:
+Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one.
 
-Accept input from user
-Allow user to input their own array numbers and target or use a random selection.
+Linear Search
+
+Linear search is a simple search algorithm that searches for an element in a list by sequentially checking each element until a match is found or the whole list has been searched.
