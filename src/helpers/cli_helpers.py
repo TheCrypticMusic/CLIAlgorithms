@@ -118,6 +118,6 @@ def to_list(user_input: str) -> list:
     list: A list of integers representing the numbers in the input string.
 
     """
-    str_list = user_input.split(" ")
+    str_list = user_input.split(",")
     ordered_list = list(map(int, str_list))
     return ordered_list
