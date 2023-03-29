@@ -25,25 +25,36 @@ class LinearSearch:
             data (list): The list of integers to search through.
             target (int): The integer to search for.
         """
-        self._data = data
-        self._target = target
+        self._data = self._check_if_empty_list(data)
+        self._target = self._check_target_index(target, data)
         self._is_found = False
         self._current_number = data[0]
         self._data_index = 0
+
+    def _check_target_index(self, target: int, data: list[int]) -> int:
+        if target in data:
+            return target
+        else:
+            raise ValueError(
+                f"Target is not present within list \
+                \nList: {data}\nTarget: {target}"
+            )
+
+    def _check_if_empty_list(self, data: list[int]) -> list[int]:
+        if len(data) > 0:
+            return data
+        else:
+            raise ValueError("Empty list provided")
 
     @property
     def data(self) -> list:
         """
         The list of integers to search through.
 
-        Raises:
-            ValueError: If the list is empty.
-
         Returns:
             list: The list of integers to search through.
         """
-        if len(self._data) < 0:
-            raise ValueError(f"Empty list provided")
+
         return self._data
 
     @data.setter
@@ -107,6 +118,7 @@ class LinearSearch:
         Args:
         - new_target (int): A new integer that we want to find within the list
         """
+        self._check_target_index(new_target, self.data)
         self._target = new_target
 
     @property
@@ -140,6 +152,9 @@ class LinearSearch:
                 if number == self.target:
                     self.is_found = True
                     return self.is_found
+                else:
+                    self.data_index += 1
+                    self.current_number = self.data[self.data_index]
             return False
 
         else:
