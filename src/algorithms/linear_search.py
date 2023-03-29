@@ -139,6 +139,7 @@ class LinearSearch:
             for number in self.data:
                 if number == self.target:
                     self.is_found = True
+                    return self.is_found
             return False
 
         else:
